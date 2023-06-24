@@ -1,0 +1,147 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Checkbox Form</title>
+  <script>
+    
+    function swapOrder() {
+  var checkboxes = document.getElementsByName("checkbox");
+  var container = document.getElementById("checkboxContainer");
+
+  var selectedCheckboxes = [];
+  var selectedIndices = [];
+  for (var i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      selectedCheckboxes.push(checkboxes[i]);
+      selectedIndices.push(i);
+    }
+  }
+
+  if (selectedCheckboxes.length > 1) {
+    selectedIndices.sort((a, b) => b - a);
+
+    for (var i = 0; i < selectedIndices.length; i++) {
+      var currentIndex = selectedIndices[i];
+      var nextIndex = selectedIndices[(i + 1) % selectedIndices.length];
+
+      var currentCheckbox = checkboxes[currentIndex];
+      var nextCheckbox = checkboxes[nextIndex];
+
+      container.insertBefore(nextCheckbox, currentCheckbox);
+      container.insertBefore(currentCheckbox, nextCheckbox.nextSibling);
+    }
+  }
+}
+    function changeValues() {
+      var checkboxes = document.getElementsByName("checkbox");
+      var newValues = ["Internship", "Pabau", "Employment", "Career"];
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].value = newValues[i];
+      }
+    }
+
+    function showSelectedValues() {
+      var checkboxes = document.getElementsByName("checkbox");
+      var selectedValues = [];
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          selectedValues.push(checkboxes[i].value);
+        }
+      }
+
+      var output = document.getElementById("output");
+      output.innerHTML = "Selected values: " + selectedValues.join(", ");
+    }
+  </script>
+</head>
+<body>
+  <h1>Checkbox Form</h1>
+  <form>
+    <div id="checkboxContainer">
+      <input type="checkbox" name="checkbox" value="Internship"> Internship<br>
+      <input type="checkbox" name="checkbox" value="Pabau"> Pabau<br>
+      <input type="checkbox" name="checkbox" value="Employment"> Employment<br>
+      <input type="checkbox" name="checkbox" value="Career"> Career<br>
+    </div>
+    <br>
+    <button type="button" onclick="swapOrder()">Shuffle Value</button>
+    <button type="button" onclick="changeValues()">Change Values</button>
+    <button type="button" onclick="showSelectedValues()">Show Selected Values</button>
+  </form>
+  <div id="output"></div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkbox Form</title>
+  <script>
+    function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+    }
+
+    function swapOrder() {
+      var checkboxes = document.getElementsByName("checkbox");
+      var values = [];
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        values.push(checkboxes[i].value);
+      }
+
+      shuffleArray(values);
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].value = values[i];
+      }
+    }
+
+    function changeValues() {
+      var checkboxes = document.getElementsByName("checkbox");
+      var newValues = ["Internship", "Pabau", "Employment", "Career"];
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].value = newValues[i];
+      }
+    }
+
+    function showSelectedValues() {
+      var checkboxes = document.getElementsByName("checkbox");
+      var selectedValues = [];
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          selectedValues.push(checkboxes[i].value);
+        }
+      }
+
+      var output = document.getElementById("output");
+      output.innerHTML = "Selected values: " + selectedValues.join(", ");
+    }
+  </script>
+</head>
+<body>
+  <h1>Checkbox Form</h1>
+  <form>
+    <div id="checkboxContainer">
+      <input type="checkbox" name="checkbox" value="Internship"> Internship<br>
+      <input type="checkbox" name="checkbox" value="Pabau"> Pabau<br>
+      <input type="checkbox" name="checkbox" value="Employment"> Employment<br>
+      <input type="checkbox" name="checkbox" value="Career"> Career<br>
+    </div>
+    <br>
+    <button type="button" onclick="swapOrder()">Shuffle Value</button>
+    <button type="button" onclick="changeValues()">Change Values</button>
+    <button type="button" onclick="showSelectedValues()">Show Selected Values</button>
+  </form>
+  <div id="output"></div>
+</body>
+</html>
+
